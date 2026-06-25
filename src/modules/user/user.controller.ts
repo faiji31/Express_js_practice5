@@ -21,6 +21,27 @@ const createUser = async(req:Request,res:Response)=>{
     }
 }
 
+const getUser = async(req:Request,res:Response)=>{
+    try {
+        const result = await userService.getUserintoDB()
+       
+        res.status(200).json({
+            success:true,
+            message:"Users retrive Successfully!",
+            data:result.rows
+
+        })
+    } catch (error:any) {
+         res.status(500).json({
+        message:error.message,
+        error:error
+    })
+        
+    }
+}
+
+
 export const userController ={
-    createUser
+    createUser,
+    getUser
 }
