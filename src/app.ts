@@ -25,39 +25,7 @@ app.use("/api/users",userRoute)
 app.use("/api/users",userRoute)
 
 
-app.get('/api/users/:id',async(req:Request,res:Response)=>{
-    const {id}= req.params
-
-    try {
-        const result =await pool.query(
-            `SELECT * FROM users WHERE id=$1`,[id]
-        )
-        if(result.rows.length===0){
-             res.status(404).json({
-            success:false,
-            message:"Users is Not Found!!!",
-            data:{}
-           
-
-        })
-        }
-         res.status(200).json({
-            success:true,
-            message:"Users retrive Successfully!",
-            data:result.rows
-
-        })
-
-    } catch (error:any) {
-         res.status(500).json({
-        message:error.message,
-        error:error
-    })
-        
-        
-    }
-
-})
+app.use("/api/users",userRoute)
 
 app.put('/api/users/:id',async(req:Request,res:Response)=>{
     const {id} = req.params
