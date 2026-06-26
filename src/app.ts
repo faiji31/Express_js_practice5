@@ -29,39 +29,6 @@ app.use("/api/users",userRoute)
 
 app.use("/api/users",userRoute)
 
-
-app.delete("/api/users/:id",async(req:Request,res:Response)=>{
-  const {id} = req.params
-  try {
-    const result = await pool.query(`
-        DELETE FROM users WHERE id = $1
-        `,[id])
-
-        if(result.rowCount ===0){
-             res.status(404).json({
-            success:false,
-            message:"Users is Not Found!!!",
-            data:{}
-           
-
-        })
-            
-
-        }
-         res.status(200).json({
-            success:true,
-            message:"Users Deleted  Successfully!",
-            data:result.rows[0]
-
-        })
-
-    
-  } catch (error:any) {
-     res.status(500).json({
-        message:error.message,
-        error:error
-    })
-  }
-})
+app.use("/api/users",userRoute)
 
 export default app
