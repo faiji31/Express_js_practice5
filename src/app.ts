@@ -3,6 +3,7 @@ import express, {  type Application, type Request, type Response } from "express
 
 import {  pool } from "./db"
 import { userRoute } from "./modules/user/user.route"
+import { profileRoute } from "./modules/profiles/profiles.route"
 const app:Application= express()
 
 
@@ -22,13 +23,6 @@ app.get('/', (req:Request, res:Response) => {
 
 app.use("/api/users",userRoute)
 
-app.use("/api/users",userRoute)
-
-
-app.use("/api/users",userRoute)
-
-app.use("/api/users",userRoute)
-
-app.use("/api/users",userRoute)
+app.use("/api/profiles",profileRoute)
 
 export default app
