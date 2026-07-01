@@ -32,7 +32,7 @@ const loginUserintoDB=async(payload:{email:string,password:string})=>{
             is_active:user.is_active
         }
 
-        const accessToken = jwt.sign(jwtpayload,config.secret,{expiresIn:"1d"})
+        const accessToken = jwt.sign(jwtpayload,config.secret,{expiresIn:"7d"})
 
         return {accessToken}
 
